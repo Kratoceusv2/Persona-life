@@ -1,0 +1,49 @@
+:root {
+    --red: #e8001c; --black: #050505; --white: #f4f4f5; --gold: #f5c842;
+    --blue: #0091ff; --gray: #1a1a1a;
+    --font-title: 'Bebas Neue', sans-serif; --font-ui: 'Rajdhani', sans-serif;
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body { 
+    background: var(--black); color: var(--white); font-family: var(--font-ui);
+    margin: 0; height: 100vh; display: flex; flex-direction: column; overflow: hidden;
+}
+header { 
+    background: var(--red); padding: 15px 20px 25px; 
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%); z-index: 10;
+}
+.app-title { font-family: var(--font-title); font-size: 28px; transform: skewX(-10deg); }
+
+main { flex: 1; overflow-y: auto; padding: 15px 15px 80px; }
+
+/* NAV BAR */
+nav { 
+    position: fixed; bottom: 0; width: 100%; height: 65px; 
+    background: var(--black); border-top: 3px solid var(--red); display: flex; 
+}
+nav button { 
+    flex: 1; background: none; border: none; color: #555; 
+    font-family: var(--font-title); font-size: 16px; 
+}
+nav button.active { color: white; background: var(--red); clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); }
+
+/* CARDS & ITEMS */
+.card { background: var(--gray); padding: 15px; margin-bottom: 10px; border-left: 4px solid var(--red); transform: skewX(-2deg); }
+.item-row { background: #222; padding: 12px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; border-right: 3px solid var(--red); }
+
+/* CALENDAR */
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+.cal-cell { aspect-ratio: 1; background: #111; display: flex; align-items: center; justify-content: center; font-size: 14px; position: relative; }
+.sun { color: var(--red); font-weight: bold; }
+.sat { color: var(--blue); font-weight: bold; }
+.today { background: var(--white); color: var(--black); font-weight: bold; transform: scale(1.1); z-index: 2; }
+.has-event::after { content: ''; position: absolute; top: 3px; right: 3px; width: 5px; height: 5px; background: var(--gold); border-radius: 50%; }
+
+/* STATS RADAR */
+#radar-container { background: #000; padding: 20px; display: flex; justify-content: center; border: 1px solid #333; margin-bottom: 15px; }
+
+/* MODALS */
+.modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: none; z-index: 1000; align-items: center; justify-content: center; }
+.modal-box { background: var(--red); padding: 20px; width: 90%; transform: rotate(-1deg); box-shadow: 8px 8px 0 #000; }
+input, select { width: 100%; padding: 12px; margin: 5px 0; background: black; border: none; color: white; }
+.btn-red { background: var(--red); color: white; border: 2px solid white; padding: 10px; width: 100%; font-family: var(--font-title); font-size: 18px; cursor: pointer; margin-top: 10px; }
