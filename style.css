@@ -1,0 +1,82 @@
+:root {
+    --red: #e8001c; --black: #050505; --white: #f4f4f5; 
+    --gold: #f5c842; --blue: #0091ff; --gray: #1a1a1a;
+    --font-title: 'Bebas Neue', sans-serif; 
+    --font-ui: 'Rajdhani', sans-serif;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+
+body { 
+    background: var(--black); color: var(--white); 
+    font-family: var(--font-ui); height: 100vh; 
+    display: flex; flex-direction: column; overflow: hidden;
+}
+
+header { 
+    background: var(--red); padding: 15px 20px; 
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%); z-index: 10;
+}
+.app-title { font-family: var(--font-title); font-size: 28px; transform: skewX(-5deg); letter-spacing: 2px;}
+
+main { flex: 1; overflow-y: auto; padding: 20px 15px 80px; }
+
+/* NAVIGATION */
+nav { 
+    position: fixed; bottom: 0; width: 100%; height: 65px; 
+    background: var(--black); border-top: 3px solid var(--red); display: flex; 
+}
+nav button { 
+    flex: 1; background: none; border: none; color: #666; 
+    font-family: var(--font-title); font-size: 18px; cursor: pointer; transition: 0.2s;
+}
+nav button.active { color: white; background: var(--red); clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%); }
+
+/* BOUTONS ET CARTES */
+.btn-red { 
+    background: var(--red); color: white; border: 2px solid white; 
+    padding: 10px; width: 100%; font-family: var(--font-title); 
+    font-size: 20px; cursor: pointer; transform: skewX(-3deg); margin-bottom: 15px;
+}
+.card { 
+    background: var(--gray); padding: 15px; margin-bottom: 10px; 
+    border-left: 5px solid var(--red); transform: skewX(-2deg); display: flex; justify-content: space-between; align-items: center;
+}
+.card-title { font-weight: bold; font-size: 18px; color: var(--gold); }
+.badge { background: #333; padding: 3px 8px; border-radius: 4px; font-size: 12px; }
+
+/* CALENDRIER */
+.cal-header { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-title); font-size: 24px; margin-bottom: 10px; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; text-align: center; }
+.cal-day-name { font-weight: bold; font-size: 14px; margin-bottom: 5px; color: #888; }
+.cal-cell { 
+    aspect-ratio: 1; background: #111; display: flex; flex-direction: column; 
+    align-items: center; justify-content: center; font-size: 16px; font-weight: bold; position: relative; border: 1px solid #222; cursor: pointer;
+}
+.sun { color: var(--red); }
+.sat { color: var(--blue); }
+.today { background: var(--white); color: var(--black); transform: scale(1.05); z-index: 2; border: 2px solid var(--red);}
+.has-event { border-bottom: 3px solid var(--gold); }
+
+/* STATS */
+#radar-container { display: flex; justify-content: center; margin-bottom: 20px; }
+.stat-bar-bg { background: #222; height: 10px; width: 100%; margin: 5px 0; border: 1px solid #444; }
+.stat-bar-fill { background: var(--red); height: 100%; transition: width 0.5s; }
+.stat-info { display: flex; justify-content: space-between; font-family: var(--font-title); font-size: 18px; }
+
+/* MODAL */
+.hidden { display: none !important; }
+#modal-overlay { 
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+    background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center; z-index: 100; 
+}
+.modal-box { 
+    background: #111; border: 3px solid var(--red); width: 90%; 
+    padding: 20px; position: relative; transform: skewX(-1deg); 
+}
+.close-btn { position: absolute; top: -15px; right: -10px; background: var(--red); color: white; border: 2px solid white; font-weight: bold; width: 30px; height: 30px; cursor: pointer; }
+input, select { 
+    width: 100%; padding: 12px; margin-bottom: 15px; 
+    background: #000; border: 1px solid #333; color: white; font-family: var(--font-ui); font-size: 16px;
+}
+
